@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+h1 {
+  text-align: center;
+}
+  form {
+  display: flex; 
+  flex-direction: column; 
+  width: 300px; 
+  margin: 0 auto;
+  padding: 20px; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  background-color: #f5f5f5; 
+}
+label {
+  display: block; 
+  margin-bottom: 5px; 
+  font-weight: bold;
+}
+input[type="number"],
+select {
+  width: 100%; 
+  padding: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 3px; 
+  font-size: 16px; 
+}
+input[type="submit"] {
+  background-color: #4CAF50; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+input[type="submit"]:hover {
+  background-color: #3e8e41; 
+}
+#result {
+  margin-top: 20px; 
+  font-weight: bold; 
+  text-align: center;
+}
+    </style>
+    <h1>Mall Spending Predictor</h1>
+  </head>
+  <body>
+    <form action="/predict" method="post">
+      <label>Gender: 
+        <select name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </label>
+      <label>Age: <input type="number" name="age" min = "1" max = "100" required/></label>
+      <label>Annual Income (in k$): <input type="number" name="annual_income" required /></label>
+      <label>Spending Score: <input type="number" name="spending_score" min="1" max="100" required/></label>
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="result">
+        {%print(result)%}
+    </div>
+  </body>
+</html>
